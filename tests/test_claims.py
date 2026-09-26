@@ -33,7 +33,7 @@ def test_readme_has_the_playbook_sections_in_order_and_the_undeployed_marker():
     want = ["Warum dieses Problem", "Befunde und Korrekturen gegenüber dem Plan", "Modell", "Methodik", "Befunde (gemessen, keine Behauptungen)", "Ehrliche Grenzen", "Tests", "Dateistruktur", "Bewusst nicht umgesetzt",
             "Reproduktion der Messreihe", "Lokal ausführen", "Verwandte Demos mit demselben mathematischen Modell"]
     assert heads == want
-    assert README.splitlines()[0].startswith("# Bullwhip-Effekt: Wer zahlt für die Glättung? – Streamlit-Demo") and "*(noch nicht deployed)*" in README.splitlines()[2]
+    assert README.splitlines()[0].startswith("# Bullwhip-Effekt: Wer zahlt für die Glättung? – Streamlit-Demo") and "[→ Demo live ausprobieren](https://sebastianhanisch-bullwhip-demo.streamlit.app/)" in README.splitlines()[2]
     assert README.rstrip().endswith("Gebaut mit Streamlit, Plotly, NumPy und fpdf2.") and "Stand 2026-09-25" in README
 
 

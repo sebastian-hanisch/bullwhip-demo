@@ -1,6 +1,6 @@
 # Bullwhip-Effekt: Wer zahlt für die Glättung? – Streamlit-Demo
 
-*(noch nicht deployed)*
+**[→ Demo live ausprobieren](https://sebastianhanisch-bullwhip-demo.streamlit.app/)**
 
 Interaktive Fall-Demo (Bestandsmanagement, Lieferkette): In einer Kette Einzelhandel → Großhandel → Distributor → Fabrik schwankt der Kundenbedarf nur leicht, die **Bestellungen weiter oben aber immer stärker**: Jede Stufe prognostiziert aus den Bestellungen der Stufe darunter
 und bestellt nach oben, und die Schwankung schaukelt sich auf – der **Bullwhip-Effekt**. Bekannt ist die Formel; die Demo fragt nach dem, was sie nicht sagt: **Was kosten Glättung, geteilte Bedarfsinformation, kürzere Wiederbeschaffungszeit und längere Prognosefenster an Kettenbestand, wenn der
