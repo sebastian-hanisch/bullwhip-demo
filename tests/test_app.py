@@ -19,9 +19,11 @@ from bw_presets import PRESET_STATE_KEYS, SETTING_SPECS
 
 APP = str(pathlib.Path(__file__).resolve().parent.parent / "app.py")
 DATA = R.load_results()
-FOOTER = ("Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-          "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-          "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)")
+FOOTER = (
+    "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zum Thema: [Bestandsmanagement optimieren](https://sebastianhanisch.net/bestandsmanagement-optimierung.html)."
+)
 SLIDERS = ("cv_slider", "rho_slider", "lead_slider", "window_slider", "gamma_slider")
 FROZEN_KEYS = set(FZ.preset_demand()["series"])
 

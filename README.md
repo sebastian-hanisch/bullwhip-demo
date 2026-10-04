@@ -158,3 +158,5 @@ Stand 2026-09-25. Kein Portfolio-Stück teilt das Modell (Prognose-Rückkopplung
 ---
 
 Gebaut mit Streamlit, Plotly, NumPy und fpdf2.
+
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zum Thema: [Bestandsmanagement optimieren](https://sebastianhanisch.net/bestandsmanagement-optimierung.html).
