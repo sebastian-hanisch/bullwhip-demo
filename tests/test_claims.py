@@ -34,7 +34,9 @@ def test_readme_has_the_playbook_sections_in_order_and_the_undeployed_marker():
             "Reproduktion der Messreihe", "Lokal ausführen", "Verwandte Demos mit demselben mathematischen Modell"]
     assert heads == want
     assert README.splitlines()[0].startswith("# Bullwhip-Effekt: Wer zahlt für die Glättung? – Streamlit-Demo") and "[→ Demo live ausprobieren](https://sebastianhanisch-bullwhip-demo.streamlit.app/)" in README.splitlines()[2]
-    assert README.rstrip().endswith("Gebaut mit Streamlit, Plotly, NumPy und fpdf2.") and "Stand 2026-09-25" in README
+    paras = README.rstrip().split("\n\n")  # vorletzter Absatz: Bauhinweis, letzter: Portfolio-Footer (set_demo_footer.py)
+    assert paras[-2] == "Gebaut mit Streamlit, Plotly, NumPy und fpdf2." and paras[-1].startswith("Diese Demo ist Teil des Portfolios von [Sebastian Hanisch]")
+    assert "Stand 2026-09-25" in README
 
 
 @pytest.mark.skipif(os.environ.get("BW_MUTATION_RUN") == "1", reason="die Dateiliste prüft die echte Projektstruktur")
