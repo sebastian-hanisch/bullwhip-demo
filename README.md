@@ -7,7 +7,7 @@ und bestellt nach oben, und die Schwankung schaukelt sich auf – der **Bullwhip
 Servicegrad in jeder Stufe gleich bleibt – und wer zahlt?** Live auf **einem Verlauf über 300 Perioden** (alle sieben Maßnahmen über denselben Endkundenbedarf: Bestellungen, Lager, Verstärkung je Stufe gegen die exakte Theorie, PDF der Auswertung) und **vorgerechnet** über 500 Wiederholungen je Zelle
 bei gleichem Servicegrad, die die Kostenaussage tragen.
 
-Teil des Portfolios für die Website „Sebastian Hanisch – Operations Research und Machine Learning". **Fall-Demo der Themenseite „Bestandsmanagement"** neben `inventory-routing-demo` (Bestand beim Kunden mit Touren). Alle Verläufe sind deterministisch (Seed), die Streuung kommt aus der Stichprobe.
+Teil des Portfolios für die Website „Sebastian Hanisch – Operations Research und Machine Learning“. **Fall-Demo der Themenseite „Bestandsmanagement“** neben `inventory-routing-demo` (Bestand beim Kunden mit Touren). Alle Verläufe sind deterministisch (Seed), die Streuung kommt aus der Stichprobe.
 
 ## Warum dieses Problem
 
@@ -149,7 +149,7 @@ Tests: `python -m pytest tests/ -v`. Volles Bau-Gate: `python tools/check_full.p
 
 Stand 2026-09-25. Kein Portfolio-Stück teilt das Modell (Prognose-Rückkopplung in einer mehrstufigen Bestellkette mit physischer Lagerführung); geteilt sind Nachbarschaften:
 
-- **Zeitreihen-Linie** (`naive-forecast-demo`, `exponential-smoothing-demo`): der gleitende Durchschnitt über p Werte ist dort ein **Prognoseverfahren** („über ein paar Wochen mitteln“), hier die **Rückkopplungsschleife**, die den Bullwhip-Effekt erzeugt. Das geplante Stück „Prognose → Bestand“ der Zeitreihen-Linie überschneidet sich mit dem
+- **Zeitreihen-Linie** (`naive-forecast-demo`, `exponential-smoothing-demo`): der gleitende Durchschnitt über p Werte ist dort ein **Prognoseverfahren** („über ein paar Wochen mitteln“), hier die **Rückkopplungsschleife**, die den Bullwhip-Effekt erzeugt. Das Stück „Prognose → Bestand“ der Zeitreihen-Linie (`forecast-inventory-demo`) überschneidet sich mit dem
   Einstufen-Fall dieser Kette (Newsvendor-Analytik: einstufig mit großem Fenster stimmt die Simulation mit der Analytik überein, Test 6).
 - **`inventory-routing-demo`:** Schwester auf der Bestandsmanagement-Seite (Bestand beim Kunden, Touren, Bündeln gegen reaktiv); dort die Frage „wer gehört heute auf die Tour“, hier „wer zahlt für die Glättung“.
 - **Multi-Agenten-Linie** (`contract-net-demo`, `task-swap-demo`, `dcop-demo`, `marl-demo`, `mappo-demo`): thematisch verwandt (dezentrale Akteure, lokale Information; geteilte Information als Gegenstück zu „dezentral gegen zentral“), mathematisch keine Gemeinsamkeit (Kran-Auftragsvergabe).
