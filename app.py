@@ -62,10 +62,21 @@ Der Kundenbedarf schwankt leicht, die **Bestellungen weiter oben in der Kette im
 und die Schwankung schaukelt sich auf – der **Bullwhip-Effekt**. Bekannt ist die Formel; die Demo fragt nach dem, was sie nicht sagt: Was kosten Glättung, geteilte Bedarfsinformation und
 kürzere Wiederbeschaffungszeit, wenn man den **Servicegrad festhält** – und **wer zahlt**? Live läuft **ein Verlauf über 300 Perioden** mit allen Maßnahmen, vorgerechnet die Messreihe über
 **500 Wiederholungen je Zelle**, die die Aussage trägt. Die Prognose als gleitender Durchschnitt ist in `naive-forecast-demo` und `exponential-smoothing-demo` ein Verfahren, hier die
-Rückkopplungsschleife; Bestand beim Kunden mit Touren zeigt `inventory-routing-demo`. Wie das Modell funktioniert, steht im Expander „Wie funktioniert diese Demo?“ weiter unten, die formale
+Rückkopplungsschleife; Bestand beim Kunden mit Touren zeigt `inventory-routing-demo`. Wer den Effekt zuerst ohne Fachbegriffe verstehen will, öffnet „💬 In einfachen Worten“. Wie das Modell funktioniert, steht im Expander „Wie funktioniert diese Demo?“ weiter unten, die formale
 Beschreibung im Expander „📐 Mathematische Formulierung“.
 """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/bullwhip-effekt-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Stellen Sie sich eine Kette vor: Laden, Großhandel, Distributor, Fabrik. Im Laden schwankt der Verkauf nur leicht. Jede Stufe schätzt aus den Bestellungen darunter, was sie braucht, und hält einen Sicherheitsbestand. Steigt der Bedarf kurz, bestellt sie mehr als nötig. Die nächste Stufe sieht nur diese Schwankung und verstärkt sie noch einmal. So schaukelt sich der Bedarf zur Fabrik hin auf wie bei einer Peitsche: der **Bullwhip-Effekt**. Die Demo prüft, was dagegen hilft und wer es bezahlt, wenn die Lieferfähigkeit gleich bleiben soll. Es ist ein stark vereinfachtes Modell mit erfundenen Parametern.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/bullwhip-effekt-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 
 st.caption("🎯 Schnellstart – ein Beispielszenario laden:")
 preset_names = list(C.PRESETS)
@@ -394,6 +405,28 @@ nächstliegenden gemessenen Konfiguration; der Knopf „Servicegrad live nachkal
     )
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/bullwhip-effekt-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben sind die Kette mit vier Stufen, der Endkundenbedarf und die Regler der Seitenleiste. Gesucht ist, wie stark die Bestellungen je Stufe schwanken (Verstärkung $V_k$) und wie viel Lager jede Maßnahme bei gleichem Servicegrad kostet.
+
+| Symbol | Bedeutung |
+|---|---|
+| $k$, $t$ | Stufe (1 = Einzelhandel), Periode |
+| $p$ | Länge des Prognosefensters |
+| $L_k = m_k$ | Wiederbeschaffungszeit, zugleich Schutzintervall |
+| $\hat\mu_k$, $\hat\sigma_k$ | geschätztes Mittel und geschätzte Streuung des Bedarfs der Stufe |
+| $z_k$ | Sicherheitsfaktor (so gewählt, dass der Servicegrad 95 % trifft) |
+| $IP_k$ | Bestandsposition |
+| $q_k$ | Bestellung der Stufe |
+| $\gamma$ | Glättung (1 = keine) |
+| $\rho$ | Autokorrelation des Bedarfs |
+| $V_k$ | Verstärkung: Varianz der Bestellung geteilt durch Varianz des Bedarfs |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/bullwhip-effekt-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **Order-up-to mit gleitendem Durchschnitt.** Stufe $k$ prognostiziert aus der Eingangsreihe $x_k$ (Bedarf der Stufe; mit geteilter Information der Endkundenbedarf) Mittel $\hat\mu_k(t)$ und Standardabweichung $\hat\sigma_k(t)$ der letzten $p$ Werte

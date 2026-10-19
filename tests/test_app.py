@@ -106,7 +106,7 @@ def test_skeleton_and_footer():
     assert len(at.title) == 1 and at.title[0].value == "🐂 Bullwhip-Effekt: Wer zahlt für die Glättung?"
     assert any(v.value.startswith("## 🐂 Wie stark schaukelt sich die Kette hoch – und was kostet es?") for v in at.markdown)
     assert any(v.value.startswith("### 📐 Was die Messreihe bei gleichem Servicegrad zeigt") for v in at.markdown)
-    assert [e.label for e in at.expander] == ["🔧 Wie wir das erreichen – Maßnahmen im Vergleich", "Wie funktioniert diese Demo?", "📐 Mathematische Formulierung"]
+    assert [e.label for e in at.expander] == ["💬 In einfachen Worten", "🔧 Wie wir das erreichen – Maßnahmen im Vergleich", "Wie funktioniert diese Demo?", "📐 Mathematische Formulierung"]
     assert any(c.value == FOOTER for c in at.caption)
     presets = [b.label for b in at.button if b.label in C.PRESETS]
     assert presets == list(C.PRESETS) == ["Standard", "Kurze Lieferzeit", "Träger Bedarf", "Kleines Fenster", "Großes Fenster"] and all(len(n) <= 32 for n in presets)
@@ -635,3 +635,21 @@ def test_a_borrowed_z_far_from_the_target_service_gets_a_warning():
     assert "z-Herkunft: z aus nächstliegender Konfiguration." in at.metric[3].help
     assert box(fresh(), "warning", "Achtung: das z je Stufe") is None                                     # exakt gemessen: keine Warnung
     assert box(fresh(rho="0.8", l="4", z="fest"), "warning", "Achtung: das z je Stufe") is None          # fester z: der Servicegrad wird ohnehin nicht festgehalten
+
+
+def test_plain_language_expander_and_reading_aid_link_to_the_explainer_page():
+    """Die Blöcke erzeugt tools/set_demo_explainer.py (Website-Repo) aus der Spezifikation der Erklärseite; hier nur, was die App davon braucht:
+    kurz und ohne Zahlen im Einsteigertext, Link auf die Seite, Lesehilfe mit Symboltabelle und Link auf den Fachteil."""
+    at = AppTest.from_file(APP, default_timeout=120)
+    at.run()
+    assert not at.exception
+    simple = next(e for e in at.expander if e.label == "💬 In einfachen Worten")
+    text = " ".join(m.value for m in simple.markdown)
+    prose = re.sub(r"\[[^\]]*\]\([^)]*\)", "", text)
+    assert 80 <= len(prose.split()) <= 130
+    assert not re.search(r"\d", prose), "der Einsteigertext nennt keine Zahlen (die stehen im Fachteil und in der README)"
+    assert "https://sebastianhanisch.net/bullwhip-effekt-erklaert.html" in text
+    math = next(e for e in at.expander if e.label == "📐 Mathematische Formulierung")
+    first = math.markdown[0].value
+    assert first.strip().startswith("**Lesehilfe.**") and "| Symbol | Bedeutung |" in first
+    assert "https://sebastianhanisch.net/bullwhip-effekt-erklaert.html#fachleute" in first
