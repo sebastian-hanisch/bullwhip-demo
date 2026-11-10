@@ -4,7 +4,7 @@ Sebastian Hanisch - Operations Research und Machine Learning
 
 Vier Stufen (Einzelhandel, Großhandel, Distributor, Fabrik) bestellen nach Order-up-to mit gleitendem Durchschnitt aus den Bestellungen der Stufe darunter: die Bestellungen schaukeln sich nach oben
 auf. Live: EIN Verlauf über 300 Perioden, alle sieben Maßnahmen (Basis, alle glätten, nur Einzelhandel glättet, Info teilen, Info teilen + Glättung, L halbiert, Fenster verdoppelt) laufen über
-denselben Endkundenbedarf. Vorgerechnet: die Messreihe über 500 Wiederholungen je Zelle bei GLEICHEM Servicegrad (data/bw_results.json), die die Kostenaussage trägt.
+denselben Endkundenbedarf. Vorgerechnet: die Messreihe über 500 Wiederholungen je Zelle bei GLEICHEM Servicegrad (data/bw_results.json), die die Kostenaussage belegt.
 
 Lauffähig mit: streamlit run app.py
 """
@@ -61,7 +61,7 @@ st.markdown(
 Der Kundenbedarf schwankt leicht, die **Bestellungen weiter oben in der Kette immer stärker**: Jede Stufe prognostiziert aus den Bestellungen der Stufe darunter und bestellt nach oben,
 und die Schwankung schaukelt sich auf – der **Bullwhip-Effekt**. Bekannt ist die Formel; die Demo fragt nach dem, was sie nicht sagt: Was kosten Glättung, geteilte Bedarfsinformation und
 kürzere Wiederbeschaffungszeit, wenn man den **Servicegrad festhält** – und **wer zahlt**? Live läuft **ein Verlauf über 300 Perioden** mit allen Maßnahmen, vorgerechnet die Messreihe über
-**500 Wiederholungen je Zelle**, die die Aussage trägt. Die Prognose als gleitender Durchschnitt ist in `naive-forecast-demo` und `exponential-smoothing-demo` ein Verfahren, hier die
+**500 Wiederholungen je Zelle**, die die Aussage belegt. Die Prognose als gleitender Durchschnitt ist in `naive-forecast-demo` und `exponential-smoothing-demo` ein Verfahren, hier die
 Rückkopplungsschleife; Bestand beim Kunden mit Touren zeigt `inventory-routing-demo`. Wer den Effekt zuerst ohne Fachbegriffe verstehen will, öffnet „💬 In einfachen Worten“. Wie das Modell funktioniert, steht im Expander „Wie funktioniert diese Demo?“ weiter unten, die formale
 Beschreibung im Expander „📐 Mathematische Formulierung“.
 """
@@ -146,7 +146,7 @@ cell = pair["cell"]
 
 st.caption(f"Live-Verlauf (ein Verlauf, {live['T'] - live['burn']} Perioden nach {live['burn']} Perioden Einschwingen): Seed {live['seed']}, CV {F.fmt_level(cv)}, ρ {F.fmt_level(rho)}, L {lead}, p {window}, "
            f"γ {F.fmt_level(gamma)}, Servicegrad: {C.ZMODE_LABELS[zmode]}. Alle Maßnahmen laufen bei jeder Einstellung neu (zusammen etwa 0,3 s, je Einstellung zwischengespeichert). "
-           "Ein einzelner Verlauf – die vorgerechnete Messreihe unten trägt die Aussage.")
+           "Ein einzelner Verlauf – die vorgerechnete Messreihe unten belegt die Aussage.")
 
 metric_rows = [st.columns(2), st.columns(2)]
 x = UI.render_metrics(metric_rows[0] + metric_rows[1], live, measure, pair)

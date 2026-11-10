@@ -1,4 +1,4 @@
-"""Abnahmekriterien der Presets (Detailplan plan_bullwhip.html, Abschnitt 7): welche Geschichte erzählt jedes Beispielszenario, und woran erkennt man, dass sie trägt?
+"""Abnahmekriterien der Presets (Detailplan plan_bullwhip.html, Abschnitt 7): welche Geschichte erzählt jedes Beispielszenario, und woran erkennt man, dass sie stimmt?
 
 Einzige Quelle für tests/test_stories.py (Schwellen einzeln kippen) und tests/test_preset_stories.py (Abnahme der echten Presets). Die Kriterien der Messreihe (`criteria`) stehen auf
 data/bw_results.json: Änderung der Summe Lager gegenüber der Basis derselben Zelle bei gleichem Servicegrad, Vorzeichen-Kriterien IMMER zusammen mit der Standardfehler-Bedingung (Betrag > 2 SE).

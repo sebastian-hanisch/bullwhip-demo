@@ -5,7 +5,7 @@
 Interaktive Fall-Demo (Bestandsmanagement, Lieferkette): In einer Kette Einzelhandel → Großhandel → Distributor → Fabrik schwankt der Kundenbedarf nur leicht, die **Bestellungen weiter oben aber immer stärker**: Jede Stufe prognostiziert aus den Bestellungen der Stufe darunter
 und bestellt nach oben, und die Schwankung schaukelt sich auf – der **Bullwhip-Effekt**. Bekannt ist die Formel; die Demo fragt nach dem, was sie nicht sagt: **Was kosten Glättung, geteilte Bedarfsinformation, kürzere Wiederbeschaffungszeit und längere Prognosefenster an Kettenbestand, wenn der
 Servicegrad in jeder Stufe gleich bleibt – und wer zahlt?** Live auf **einem Verlauf über 300 Perioden** (alle sieben Maßnahmen über denselben Endkundenbedarf: Bestellungen, Lager, Verstärkung je Stufe gegen die exakte Theorie, PDF der Auswertung) und **vorgerechnet** über 500 Wiederholungen je Zelle
-bei gleichem Servicegrad, die die Kostenaussage tragen.
+bei gleichem Servicegrad, die die Kostenaussage belegen.
 
 Teil des Portfolios für die Website „Sebastian Hanisch – Operations Research und Machine Learning“. **Fall-Demo der Themenseite „Bestandsmanagement“** neben `inventory-routing-demo` (Bestand beim Kunden mit Touren). Alle Verläufe sind deterministisch (Seed), die Streuung kommt aus der Stichprobe.
 
@@ -84,7 +84,7 @@ Alle Zahlen: Hauptszenario (CV 0,2, ρ 0, L 2, p 10, 4 Stufen), gleicher Service
 - **Kleine Fenster** (p 4 bis 6) erzeugen durch die σ-Schätzung extreme Verstärkung und Bestand (p 4: Stufe 4 bis 342): ein Schätzartefakt der Regel, kein Naturgesetz; Basisfenster deshalb p = 10, das Preset „Kleines Fenster“ (p = 6) mit Hinweis.
 - **Sicherheitsbestandsrechnung** aus der Ein-Perioden-Streuung desselben Fensters (mit einer Prognosefehler-Streuung ändern sich die absoluten Zahlen); **Glättung** als proportionaler Regler (andere Formen nicht getestet); Politik: gleitender Durchschnitt und Order-up-to.
 - **Regime-Zellen einmal gerechnet** (nur das Hauptszenario zusätzlich mit anderen Seeds): kleine Unterschiede nicht deuten.
-- **Ein Verlauf streut.** Die Live-Zahlen tragen die Überschrift „ein Verlauf“ (Summe Lager typisch ±5 % um die Messreihe, Änderungen durch Maßnahmen ±5 Prozentpunkte); die Aussage trägt die Messreihe.
+- **Ein Verlauf streut.** Die Live-Zahlen tragen die Überschrift „ein Verlauf“ (Summe Lager typisch ±5 % um die Messreihe, Änderungen durch Maßnahmen ±5 Prozentpunkte); die Aussage belegt die Messreihe.
 - **Zellen-Abdeckung und Schnellkalibrierung** siehe AP 0 (a) und (c): 10 von 108 Reglerkombinationen sind genau gemessen, das Live-z ist sonst die nächstliegende gemessene Konfiguration oder grob (Servicegrad ±1 Punkt, Summe Lager ±5 %).
 
 ## Tests

@@ -119,7 +119,7 @@ def generate_bw_pdf(settings, live, measure, message_text, note, cell_text, comp
     for text in [
         "Stilisierte Kette: vier Stufen mit gleicher Wiederbeschaffungszeit und gleichem Fenster, ein Produkt, unbegrenzter Lieferant, keine Kapazitäten, keine Losgrößen, keine Informationsverzögerung, "
         "keine Rationierung. Parameter erfunden, nicht kalibriert: die Aussagen gelten in diesem Modell, bei diesen Reglern.",
-        f"Ein einzelner Verlauf streut; die Aussage tragen die vorgerechneten 500 Wiederholungen je Zelle der Messreihe. Zell-Zuordnung: {cell_text}. Kosten der Bestellvarianz (Kapazität, Umrüstung, "
+        f"Ein einzelner Verlauf streut; die Aussage belegen die vorgerechneten 500 Wiederholungen je Zelle der Messreihe. Zell-Zuordnung: {cell_text}. Kosten der Bestellvarianz (Kapazität, Umrüstung, "
         "Expresszuschläge) sind nicht bewertet, der Nutzen der Glättung für die oberen Stufen ist deshalb eher unterschätzt.",
         "Bei gleichem Servicegrad wird z je Stufe so gewählt, dass der Mengen-Servicegrad 95 % erreicht; bei festem z = 1,645 wird der Servicegrad nicht festgehalten, dann täuscht ein Vergleich. Kleine "
         "Fenster (p bis 6) erzeugen durch die Schätzung der Streuung extreme Verstärkung (ein Schätzartefakt der Regel, kein Naturgesetz).",
